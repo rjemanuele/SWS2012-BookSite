@@ -10,8 +10,8 @@
 
     <!-- styles -->
 
-    <link href="{{ STATIC_URL }}/bootstrap.css" type="text/css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}/bootstrap-responsive.css" type="text/css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" type="text/css" rel="stylesheet">
     <link href="{{ STATIC_URL }}webfontkit/stylesheet.css" type="text/css" rel="stylesheet"/>
     <link href="{{ STATIC_URL }}webfontkit/ss-social/ss-social.css" type="text/css" rel="stylesheet" />
     <link href="{{ STATIC_URL }}css/styles.css" type="text/css" rel="stylesheet">
@@ -106,7 +106,13 @@ Do later
         </div>
     </div>
     <div class="row-fluid buttons"> <!--buttons-->
-
+        <form method="POST" id="myform">
+        <input type="hidden" name="genre_field" id="genre_field" value="{{ form.genre_field.value }}">
+        <input type="hidden" name="popularity_field" id="popularity_field" value="{{ form.popularity_field.value }}">
+        <input type="hidden" name="age_field" id="age_field" value="{{ form.age_field.value }}">
+        <input type="hidden" name="genre_text_field" id="genre_text_field" value="{{ form.genre_text_field.value|default:""|safe }}">
+        <input type="hidden" name="popularity_text_field" id="popularity_text_field" value="{{ form.popularity_text_field.value|default:""|safe }}">
+        <input type="hidden" name="age_text_field" id="age_text_field" value="{{ form.age_text_field.value|default:""|safe }}">
         <div class="dropdown span4 selection genre">
             <a class="dropdown-toggle btn btn-block" data-toggle="dropdown" id="genre_btn" href="#">
                 {{ form.genre_text_field.value|default:"Genre"|safe }} 
@@ -179,7 +185,9 @@ Do later
             <a class="btn btn-large btn-block" type="button" onclick="document.forms['myform'].submit()">Summon Book</a>
         </div>
     </div>
+    </form>
 <hr>
+{% if Book %}
     <div class="row-fluid">
         <div class="span12 well result">
             <h1><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}">{{ Book.ItemAttributes.Title }}</a> <span>| {{ Book.ItemAttributes.Author }}</span></h1>
@@ -221,10 +229,15 @@ Do later
                     <a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a>
                 </div>
                 {% endfor %}
+		{% if Similar|length == 0 %}
+		<div class="span3 well book">
+		  <h3>No similar titles available.</h3>
+		</div>
+		{% endif %}
             </div>
         </div>
     </div>
-
+{% endif %}
     <hr>
 
 {% if Exception %}

@@ -110,7 +110,7 @@ def get_similar_books(ASIN):
         similar_items = []
         i = 0
         for book in books:
-            if (i==3):
+            if (i==4):
                 return similar_items
 
             similar_items.append(book)
