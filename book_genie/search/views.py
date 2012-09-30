@@ -23,13 +23,18 @@ def AWSFetch1of50(genre, popularity, age):
     else:
         year = year - age - 1
         
-    book = amazon.get_book(genre, popularity, year, before)
-    similar = amazon.get_similar_books(book.ASIN)
-    return Context({
-            'Book' : book,
-            'Similar' : similar,
-            'Tag' : amazon.ASSOCIATE_TAG
-            })
+    try:
+        book = amazon.get_book(genre, popularity, year, before)
+        similar = amazon.get_similar_books(book.ASIN)
+        return Context({
+                'Book' : book,
+                'Similar' : similar,
+                'Tag' : amazon.ASSOCIATE_TAG,
+                })
+    except Exception, err:
+        return Context({
+                'Exception' : err,
+                })
 
 
 def index(request):
