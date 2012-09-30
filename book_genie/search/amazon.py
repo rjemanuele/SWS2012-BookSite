@@ -4,6 +4,7 @@ import sys
 import random
 import pprint
 
+
 from amazonproduct import NoExactMatchesFound
 from amazonproduct import API
 
@@ -13,9 +14,12 @@ ASSOCIATE_TAG = 'wwwdarktoneco-20'
 TOP_TEN = 10
 RESULT_LIMIT = 89
 
+
 def get_book(genre, popularity, pub_era, before):
 
     api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
+    genre = genre.replace('&amp;', ' ')
+    genre = genre.replace(',', ' ')
 
     if (before):
         param = 'before'
@@ -81,3 +85,29 @@ def get_book(genre, popularity, pub_era, before):
                     return book
 
                 i = i + 1
+
+def get_similar_books(ASIN):
+
+    api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
+
+    for root in api.similarity_lookup(str(ASIN)):
+
+        try:
+            current_page = root.Items.Request.ItemSearchRequest.ItemPage.pyval
+        except AttributeError:
+            current_page = 1
+
+        #print 'page %d of %d' % (current_page, total_pages)
+
+
+        nspace = root.nsmap.get(None, '')
+        books = root.xpath('//aws:Items/aws:Item', namespaces={'aws' : nspace})
+        similar_items = []
+        i = 0
+        for book in books:
+            if (i==3):
+                return similar_items
+
+            similar_items.append(book)
+
+            i = i + 1

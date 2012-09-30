@@ -24,10 +24,10 @@ def AWSFetch1of50(genre, popularity, age):
         year = year - age - 1
         
     book = amazon.get_book(genre, popularity, year, before)
-
+    similar = amazon.get_similar_books(book.ASIN)
     return Context({
             'Book' : book,
-
+            'Similar' : similar,
             })
 
 

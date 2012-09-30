@@ -156,7 +156,9 @@ DON'T FORGET!
                 </div>            
               </div>         
           </div><!--/row-->
-
+        {% for similar_book in Similar %}
+            {{similar_book.ItemAttributes.Title}}, 
+        {% endfor %}
 	  {% endif %}
 
 
