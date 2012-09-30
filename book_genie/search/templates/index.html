@@ -158,22 +158,25 @@ DON'T FORGET!
               </div>         
           </div><!--/row-->
 
-          {% for similar_book in Similar %}
-          <div class="row-fluid">
-            <div class="row-fluid similar"> <!--similar books-->
-              <section class="span4 well book"> <!--book-->
-                <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
-                <div class="row-fluid">
-                    <div class="span6">
-                        <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
-                    </div>
+          <div class="row-fluid similar">
+            {% for similar_book in Similar %}
+            <section class="span4 well book"> <!--book-->
+              <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
+              <div class="row-fluid">
+                <div class="span6">
+                  <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
                 </div>
-              </section> <!--/book-->
-            </div>
+              </div>		
+            </section> <!--/book-->
+            {% endfor %}
           </div>
-          {% endfor %}
 	  {% endif %}
 
+	  {% if Exception %}
+          <div class="row-fluid well">
+	    Error: {{ Exception }}
+          </div>
+	  {% endif %}
 
 <!-- RECENT BOOKS 
           <div class="row-fluid"> 
