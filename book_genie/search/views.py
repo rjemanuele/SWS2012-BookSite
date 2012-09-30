@@ -31,9 +31,10 @@ def AWSFetch1of50(genre, popularity, age):
                 'Similar' : similar,
                 'Tag' : amazon.ASSOCIATE_TAG,
                 })
-    except Exception, err:
+    except Exception as inst:
         return Context({
-                'Exception' : err,
+                'Exception' : type(inst),
+                'Args' : inst,
                 })
 
 
@@ -42,7 +43,7 @@ def index(request):
     if request.method == 'POST': # If the form has been submitted...
         form = WheelForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
-            print "Yes, VALID data: { %s } { %d } { %d}"%(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
+            print "Yes, VALID data: { %s } { %d } { %d }"%(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
             content = AWSFetch1of50(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
             # Process the data in form.cleaned_data
             # ...
