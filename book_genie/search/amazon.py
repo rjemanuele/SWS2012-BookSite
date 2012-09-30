@@ -4,6 +4,7 @@ import sys
 import random
 import pprint
 
+
 from amazonproduct import NoExactMatchesFound
 from amazonproduct import API
 
@@ -17,6 +18,8 @@ RESULT_LIMIT = 89
 def get_book(genre, popularity, pub_era, before):
 
     api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
+    genre = genre.replace('&amp;', ' ')
+    genre = genre.replace(',', ' ')
 
     if (before):
         param = 'before'
