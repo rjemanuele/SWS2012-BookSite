@@ -41,7 +41,7 @@ def index(request):
             # Process the data in form.cleaned_data
             # ...
             content['form_data'] = form
-            return render(request, 'result.html', content)
+            return render(request, 'index.html', content)
 
     else:
         form = WheelForm() # An unbound form
