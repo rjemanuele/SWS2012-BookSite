@@ -58,12 +58,12 @@ DON'T FORGET!
 
     <div class="container-fluid content">
       <form id="myform" method="POST">
-        <input type="hidden" name="genre_field" id="genre_field" value="">
-        <input type="hidden" name="popularity_field" id="popularity_field" value="">
-        <input type="hidden" name="age_field" id="age_field" value="">
-        <input type="hidden" name="genre_text_field" id="genre_text_field" value="">
-        <input type="hidden" name="popularity_text_field" id="popularity_text_field" value="">
-        <input type="hidden" name="age_text_field" id="age_text_field" value="">
+        <input type="hidden" name="genre_field" id="genre_field" value="{{ form.genre_field.value }}">
+        <input type="hidden" name="popularity_field" id="popularity_field" value="{{ form.popularity_field.value }}">
+        <input type="hidden" name="age_field" id="age_field" value="{{ form.age_field.value }}">
+        <input type="hidden" name="genre_text_field" id="genre_text_field" value="{{ form.genre_text_field.value|default:""|safe }}">
+        <input type="hidden" name="popularity_text_field" id="popularity_text_field" value="{{ form.popularity_text_field.value|default:""|safe }}">
+        <input type="hidden" name="age_text_field" id="age_text_field" value="{{ form.age_text_field.value|default:""|safe }}">
         <div class="row-fluid">
 
 
@@ -71,7 +71,7 @@ DON'T FORGET!
             <div class="row-fluid"> 
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genre_btn" href="#">Genre <i class="icon-chevron-down"></i></a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genre_btn" href="#">{{ form.genre_text_field.value|default:"Genre"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
@@ -106,7 +106,7 @@ DON'T FORGET!
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">Book Age <i class="icon-chevron-down"></i></a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">{{ form.age_text_field.value|default:"Book Age"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
@@ -118,7 +118,7 @@ DON'T FORGET!
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">Popularity <i class="icon-chevron-down"></i></a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">{{ form.popularity_text_field.value|default:"Popularity"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">All</a></li>
