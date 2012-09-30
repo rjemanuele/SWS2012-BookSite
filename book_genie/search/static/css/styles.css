@@ -1,15 +1,80 @@
- .content {
-/*want to eventually center content*/
+/*PREFLIGHT STYLING*/
+/*div, section {
+	outline: red dotted 1px;
+}*/
+
+h1, h2, h3, h4, h5, h6, .navbar, .gobutton {
+	font-family: 'aldosemibold', Arial, sans-serif;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.fake-well {
+	background: 1px solid #D3D3D3;
 }
 
 .selection {
 }
 
-.gobutton {
-	margin: 10px 0px;
+/*branding*/
+
+.branding h1 {
+	font-size: 4em;
+	margin-bottom:20px;
 }
-.recent-discovery {
+
+.branding h4 {
+	line-height: 1.5em;
 }
+.branding img {
+	width: 90%;
+	margin: 0 5%;
+}
+h3 a.ss-icon {
+	margin-top: 5px;
+}
+/* buttons */
+.options {
+	text-align: center;
+}
+.buttons, .gobutton {
+	margin: 1% 0;
+}
+
+.genre>a, .release>a, .popularity>a {
+	font-family: 'aldosemibold', Arial, sans-serif;
+	font-size: 1.5em
+}
+
+.dropdown {
+margin-left;0px;
+}
+.gobutton a {
+	font-size: 3em;
+	color:#01426f;
+}
+
 .selection ul.dropdown-menu {
 	width: 100%;
 }
+
+
+
+/* Found Book styling*/
+.result h1 span {
+	color: gray;
+
+}
+
+.result .span2 img {
+	border-top: gray solid 1px;
+	border-left: gray solid 1px;
+	border-bottom: white solid 1px;
+	border-right: white solid 1px;
+}
+
+
+/* Similar book stylings */
+
