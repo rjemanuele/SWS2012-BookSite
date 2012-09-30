@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
 import random
 import amazon
-
+from amazonproduct.errors import NoSimilarityForASIN
 
 class WheelForm(forms.Form):
     genre_field = forms.CharField()
@@ -25,7 +25,11 @@ def AWSFetch1of50(genre, popularity, age):
         
     try:
         book = amazon.get_book(genre, popularity, year, before)
-        similar = amazon.get_similar_books(book.ASIN)
+        try:
+            similar = amazon.get_similar_books(book.ASIN)
+        except NoSimilarityForASIN:
+            similar = []
+            pass
         return Context({
                 'Book' : book,
                 'Similar' : similar,
@@ -33,8 +37,8 @@ def AWSFetch1of50(genre, popularity, age):
                 })
     except Exception as inst:
         return Context({
-                'Exception' : type(inst),
-                'Args' : inst,
+                'Exception' : str(type(inst)),
+                'Args' : str(inst),
                 })
 
 

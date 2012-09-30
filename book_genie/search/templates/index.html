@@ -180,13 +180,18 @@ DON'T FORGET!
                 </div>		
               </section> <!--/book-->
               {% endfor %}
+	      {% if Similar|length == 0 %}
+	      <section class="span4 well book">
+		No similar titles found.
+	      </similar>
+              {% endif %}
             </div>
           </div>
 	  {% endif %}
 
 	  {% if Exception %}
           <div class="row-fluid well">
-	    Error: {{ Exception }} ( {{ Args }} }
+	    Error: {{ Exception }} ( {{ Args }} )
           </div>
 	  {% endif %}
 
