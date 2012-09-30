@@ -1,18 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Book Genie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Welcome to BookGenie, connecting interesting books and interesting people in a fast and fun way.">
+    <meta name="author" content="BookGenie">
     <!-- FILL IN LATER -->
 
     <!-- styles -->
-    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet">
+
+    <link href="{{ STATIC_URL }}/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/bootstrap-responsive.css" type="text/css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}webfontkit/stylesheet.css" type="text/css" rel="stylesheet"/>
+    <link href="{{ STATIC_URL }}webfontkit/ss-social/ss-social.css" type="text/css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}css/styles.css" type="text/css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -21,18 +23,16 @@
 
     <!-- fav and touch icons -->
 
-<!--     
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+<!--
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png"> 
-DON'T FORGET!
+Do later
   -->
-  </head>
-
-  <body>
-
+</head>
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -41,264 +41,210 @@ DON'T FORGET!
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Book Genie</a>
+          <a class="brand" href="#">BookGenie</a>
           <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              Hi there <a href="#" class="navbar-link">Person</a>
-            </p>
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">Lists</a></li>
-              <li><a href="#contact">Saved Books</a></li>
+              <li><a href="#about" class="ss-icon">Facebook</a></li>
+              <li><a href="#about" class="ss-icon">Twitter</a></li>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
+    
+    <div class="container-fluid"> <!--start page-->
 
-    <div class="container-fluid content">
-      <form id="myform" method="POST">
-        <input type="hidden" name="genre_field" id="genre_field" value="{{ form.genre_field.value }}">
-        <input type="hidden" name="popularity_field" id="popularity_field" value="{{ form.popularity_field.value }}">
-        <input type="hidden" name="age_field" id="age_field" value="{{ form.age_field.value }}">
-        <input type="hidden" name="genre_text_field" id="genre_text_field" value="{{ form.genre_text_field.value|default:""|safe }}">
-        <input type="hidden" name="popularity_text_field" id="popularity_text_field" value="{{ form.popularity_text_field.value|default:""|safe }}">
-        <input type="hidden" name="age_text_field" id="age_text_field" value="{{ form.age_text_field.value|default:""|safe }}">
-        <div class="row-fluid">
-
-
-          <div class="span12">
-            <div class="row-fluid"> 
-
-              <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genre_btn" href="#">{{ form.genre_text_field.value|default:"Genre"|safe }}<i class="icon-chevron-down"></i></a>
-                <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Biographies &amp; Memoirs</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Business &amp; Investing</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Children's Books</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Christian Books &amp; Bibles</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Comics &amp; Graphic Novels</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Cook Books, Food &amp; Wine</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Crafts Hobbies &amp; Home</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Computers &amp; Technology</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Education &amp; Reference</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Gay &amp; Lesbian</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Health, Fitness & Dieting</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">History</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Humor &amp; Entertaining</a></li> 
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Law</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Literature &amp; Fiction</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Medicine</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Mystery, Thriller &amp; Suspense</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Parenting &amp; Relationships</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Politics &amp; Social Sciences</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Professional & Technical Books</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Religion &amp; Spirituality</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Romance</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science &amp; Math</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science Fiction & Fantasy</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Sports &amp; Outdoors</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Teens</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Travel</a></li>
-                </ul>
-              </div>
-
-              <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">{{ form.age_text_field.value|default:"Book Age"|safe }}<i class="icon-chevron-down"></i></a>
-                <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 10);">Within 10 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 20);">Within 20 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1);">Really Old</a></li>
-                </ul>
-              </div>
-
-              <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">{{ form.popularity_text_field.value|default:"Popularity"|safe }}<i class="icon-chevron-down"></i></a>
-                <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">All</a></li>
-                </ul>
-              </div>          </div><!--/row-->
-
-            <div class="row-fluid gobutton">
-              <div class="span12">
-                <a class="btn btn-large span4 offset4" type="button" onclick="document.forms['myform'].submit()">Summon Book!</a>
-              </div>
+    <div class="row-fluid branding"> 
+        <div class="span12 well">
+            <div class="span4">
+                <img src="../static/img/logo.png"/>
             </div>
-        </form>
+            <div class="span5">
+                <h1>Welcome to BookGenie</h1>
+                <h4>Connecting interesting books and interesting people in a fast and fun way.</h4>
+                <p>BookGenie helps casual readers quickly find their next interesting book. Using a simple and interactive ‘three wish’ design, users select a few simple criteria and let BookGenie do the rest. BookGenie quickly delivers a book recommendation on the go - allowing readers to quit browsing and start reading.</p>
+                <h4>Follow us on <a href="https://www.facebook.com/pages/BookGenie/293459337435553" target="_blank">Facebook</a> and <a href="http://www.twitter.com/findbooksfast" target="_blank">Twitter</a> for the lastest updates.</h4>
+            </div>
+            <div class="span3">
+                <section class="twitter">           
+                    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                    <script>
+                    new TWTR.Widget({
+                      version: 2,
+                      type: 'profile',
+                      rpp: 5,
+                      interval: 30000,
+                      width: 'auto',
+                      height: 300,
+                      theme: {
+                        shell: {
 
-      {% if Book %}
-          <div class="row-fluid"> 
-            <div class="span12 well result">
-              <h1><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}">{{ Book.ItemAttributes.Title }}</a></h1>
-              <div class="row-fluid">
-                <section class="span2">
-                  <p><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}"><img src="{{ Book.LargeImage.URL.pyval }}"></a></p>
+                          background: '#ffffff',
+                          color: '#01426f'
+                        },
+                        tweets: {
+                          background: '#ffffff',
+                          color: '#525252',
+                          links: '#01426f'
+                        }
+                      },
+                      features: {
+                        loop: false,
+                        live: true,
+                        behavior: 'all'
+                      }
+                    }).render().setUser('findbooksfast').start();
+                    </script>
                 </section>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 options">
+            <h1>Select your options</h1>
+        </div>
+    </div>
+    <div class="row-fluid buttons"> <!--buttons-->
 
-                  <section class="span5">
-		    <ul>
-                      <li>Author: {{ Book.ItemAttributes.Author }}</li>
-                      <li>Pages: {{ Book.ItemAttributes.NumberOfPages }}</li>
-                      <li>ISBN: {{ Book.ItemAttributes.ISBN }}</li>
-                      <li>Edition: {{ Book.ItemAttributes.Edition }}</li>
-                      <li>Publisher: {{ Book.ItemAttributes.Publisher }}</li>
-                      <li>Published: {{ Book.ItemAttributes.PublicationDate }}</li>
-                      <li>Binding: {{ Book.ItemAttributes.Binding }}</li>
-                      <li>Sales Rank: {{ Book.SalesRank }}</li>
-		    </ul>
+        <div class="dropdown span4 selection genre">
+            <a class="dropdown-toggle btn btn-block" data-toggle="dropdown" id="genre_btn" href="#">
+                {{ form.genre_text_field.value|default:"Genre"|safe }} 
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu" >
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Biographies &amp; Memoirs</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Business &amp; Investing</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Children's Books</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Christian Books &amp; Bibles</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Comics &amp; Graphic Novels</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Cook Books, Food &amp; Wine</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Crafts Hobbies &amp; Home</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Computers &amp; Technology</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Education &amp; Reference</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Gay &amp; Lesbian</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Health, Fitness &amp; Dieting</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">History</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Humor &amp; Entertaining</a></li> 
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Law</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Literature &amp; Fiction</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Medicine</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Mystery, Thriller &amp; Suspense</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Parenting &amp; Relationships</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Politics &amp; Social Sciences</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Professional &amp; Technical Books</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Religion &amp; Spirituality</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Romance</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science &amp; Math</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science Fiction &amp; Fantasy</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Sports &amp; Outdoors</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Teens</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Travel</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown span4 selection release">
+            <a class="dropdown-toggle btn btn-block" data-toggle="dropdown" id="age_btn" href="#">
+                {{ form.age_text_field.value|default:"Book Age"|safe }}
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu" >
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 10);">Within 10 Years</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 20);">Within 20 Years</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1);">Older than 20 Years</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown span4 selection popularity">
+            <a class="dropdown-toggle btn btn-block" data-toggle="dropdown" id="popularity_btn" href="#">
+                {{ form.popularity_text_field.value|default:"Popularity"|safe }} 
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu" >
+              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
+              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">All</a></li>
+            </ul>
+        </div>
+
+    </div> <!--/buttons-->
+
+    <div class="row-fluid"> <!--go-->
+        <div class="span4"></div>
+        <div class="span4 gobutton"> 
+            <a class="btn btn-large btn-block" type="button" onclick="document.forms['myform'].submit()">Summon Book</a>
+        </div>
+    </div>
+<hr>
+    <div class="row-fluid">
+        <div class="span12 well result">
+            <h1><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}">{{ Book.ItemAttributes.Title }}</a> <span>| {{ Book.ItemAttributes.Author }}</span></h1>
+            <div class="row-fluid">
+                <div class="span2"> <!--book img-->
+                    <a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}"><img src="{{ Book.LargeImage.URL.pyval }}"></a>
+                </div>
+                <div class="span4"> <!--book discrip-->
+                    <ul>
+                      <li><strong>Pages:</strong> {{ Book.ItemAttributes.NumberOfPages }}</li>
+                      <li><strong>ISBN:</strong> {{ Book.ItemAttributes.ISBN }}</li>
+                      <li><strong>Edition:</strong> {{ Book.ItemAttributes.Edition }}</li>
+                      <li><strong>Publisher:</strong> {{ Book.ItemAttributes.Publisher }}</li>
+                      <li><stong>Published:</stong> {{ Book.ItemAttributes.PublicationDate }}</li>
+                      <li><strong>Binding:</strong> {{ Book.ItemAttributes.Binding }}</li>
+                      <li><strong>Sales Rank:</strong> {{ Book.SalesRank }}</li>
+                    </ul>
 
                     {{ Book.EditorialReviews.EditorialReview.Content|safe }}
-                  </section>
-
-                <section class="span3">
-		  <!-- Colorize this better using http://www.greeneteapot.com/2011/03/change-colors-in-amazon-text-plus-image.html -->
-		  <!-- Automatic resizing?? -->
-		  <iframe src="{{ Book.CustomerReviews.IFrameURL }}" width="450" height="280"></iframe>
-                </section>
-
-                </div>            
-              </div>         
-          </div><!--/row-->
-
-          <div class="row-fluid"> 
-            <h1>Similar Titles</h1>
-
-            <div class="row-fluid similar">
-              {% for similar_book in Similar %}
-              <section class="span4 well book"> <!--book-->
-                <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
-                <div class="row-fluid">
-                  <div class="span6">
-                    <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
-                  </div>
-                </div>		
-              </section> <!--/book-->
-              {% endfor %}
+                </div>
+                <div class="span6"> <!--amazon-->
+                    <iframe src="{{ Book.CustomerReviews.IFrameURL }}" width="100%" height="500px"></iframe>
+                </div>
             </div>
-          </div>
-	  {% endif %}
-
-	  {% if Exception %}
-          <div class="row-fluid well">
-	    Error: {{ Exception }} ( {{ Args }} }
-          </div>
-	  {% endif %}
-
-<!-- RECENT BOOKS 
-          <div class="row-fluid"> 
-            <h1>Recently Discovered</h1>
-            <p>see what other people have found</p>
-
-            <div class="row-fluid recent-discovery">
-              <section class="span12 well">
-                <h2>Title</h2>
-                <div class="span2">
-                  <div class="box">
-                    <p>book img to go here</p>
-                  </div>
+        </div>
+    </div>
+      
+    <div class="row-fluid">
+        <div class="span12">
+            <h2>Similar Titles</h2>
+            <div class="row-fluid">
+                {% for similar_book in Similar %}
+                <div class="span3 well book">
+                    <h3>
+                        <a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">
+                        {{similar_book.ItemAttributes.Title}} 
+                        </a>
+                    </h3>
+                    <a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a>
                 </div>
-
-                <div class="span2">
-                  <ul>
-                    <li>amazon rating</li>
-                    <li>user rating</li>
-                    <li>content rating?</li>
-                  </ul>
-                </div>
-
-                <div class="span7">
-                  <p>Book Summary Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-              </section>
+                {% endfor %}
             </div>
+        </div>
+    </div>
 
-            <div class="row-fluid recent-discovery">
-              <section class="span12 well">
-                <h2>Title</h2>
-                <div class="span2">
-                  <div class="box">
-                    <p>book img to go here</p>
-                  </div>
-                </div>
+    <hr>
 
-                <div class="span2">
-                  <ul>
-                    <li>amazon rating</li>
-                    <li>user rating</li>
-                    <li>content rating?</li>
-                  </ul>
-                </div>
+{% if Exception %}
+  <div class="row-fluid">
+Error: {{ Exception }} ( {{ Args }} }
+  </div>
+{% endif %}
 
-                <div class="span7">
-                  <p>Book Summary Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-              </section>
-            </div>
+    <footer>
+        <p>&copy; Book Genie 2012</p>
+    </footer>
 
-            <div class="row-fluid recent-discovery">
-              <section class="span12 well">
-                <h2>Title</h2>
-                <div class="span2">
-                  <div class="box">
-                    <p>book img to go here</p>
-                  </div>
-                </div>
-
-                <div class="span2">
-                  <ul>
-                    <li>amazon rating</li>
-                    <li>user rating</li>
-                    <li>content rating?</li>
-                  </ul>
-                </div>
-
-                <div class="span7">
-                  <p>Book Summary Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-              </section>
-            </div>
-
-
-          </div> -->
-          <!--/row-->
-        </div><!--/span-->
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <p>&copy; Book Genie Group 2012</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-    <!-- Le javascript
+</div> <!-- /container -->
+    <!-- javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
     <script src="{{ STATIC_URL }}reader.js"></script>
 
-  </body>
+</body>
 </html>
