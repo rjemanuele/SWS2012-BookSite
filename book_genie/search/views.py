@@ -28,6 +28,7 @@ def AWSFetch1of50(genre, popularity, age):
     return Context({
             'Book' : book,
             'Similar' : similar,
+            'Tag' : amazon.ASSOCIATE_TAG
             })
 
 
