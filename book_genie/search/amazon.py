@@ -14,6 +14,8 @@ ASSOCIATE_TAG = 'wwwdarktoneco-20'
 TOP_TEN = 10
 RESULT_LIMIT = 89
 
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def get_book(genre, popularity, pub_era, before):
 
@@ -29,7 +31,7 @@ def get_book(genre, popularity, pub_era, before):
     randSet = 1
     found = 0
 
-    for root in api.item_search('Books', ResponseGroup='Large', Power='pubdate:'+param+' '+str(pub_era)+' and subject:'+ genre, Sort = "salesrank"):
+    for root in api.item_search('Books', ResponseGroup='Large,EditorialReview', Power='pubdate:'+param+' '+str(pub_era)+' and binding: not kindle and subject:'+ genre, Sort = "salesrank"):
 
 
         total_results = root.Items.TotalResults.pyval
