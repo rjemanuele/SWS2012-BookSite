@@ -3,26 +3,31 @@ from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
 import random
-
-from amazonproduct import *
-
-AWS_KEY = 'AKIAJ7B6DSAVWVFPC7RQ'
-SECRET_KEY = '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'
-ASSOCIATE_TAG = 'wwwdarktoneco-20'
-
+import amazon
 
 
 class WheelForm(forms.Form):
-    genre_field = forms.CharField(required=True)
-    popularity_field = forms.CharField(required=True)
-    age_field = forms.CharField(required=True)
+    genre_field = forms.CharField()
+    popularity_field = forms.BooleanField()
+    age_field = forms.IntegerField()
+    genre_text_field = forms.CharField()
+    popularity_text_field = forms.CharField()
+    age_text_field = forms.CharField()
 
-def AWSFetch1of50(genre, stars, timedivide):
+def AWSFetch1of50(genre, popularity, age):
+    year = 2012
+    before = False
+    if (age == -1):
+        year = year - 19
+        before = True
+    else:
+        year = year - age - 1
+        
+    book = amazon.get_book(genre, popularity, year, before)
+
     return Context({
-            'ASIN':'389438948943',
-            'Name':'Some Book',
-            'Genre':'Histoy',
-            'Description':'This is a book\'s description.'
+            'Book' : book,
+
             })
 
 
@@ -31,10 +36,13 @@ def index(request):
     if request.method == 'POST': # If the form has been submitted...
         form = WheelForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
+            print "Yes, VALID data"
             content = AWSFetch1of50(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
             # Process the data in form.cleaned_data
             # ...
+            content['form_data'] = form
             return render(request, 'result.html', content)
+
     else:
         form = WheelForm() # An unbound form
 

@@ -61,6 +61,9 @@ DON'T FORGET!
         <input type="hidden" name="genre_field" id="genre_field" value="">
         <input type="hidden" name="popularity_field" id="popularity_field" value="">
         <input type="hidden" name="age_field" id="age_field" value="">
+        <input type="hidden" name="genre_text_field" id="genre_text_field" value="">
+        <input type="hidden" name="popularity_text_field" id="popularity_text_field" value="">
+        <input type="hidden" name="age_text_field" id="age_text_field" value="">
         <div class="row-fluid">
 
 
@@ -105,20 +108,20 @@ DON'T FORGET!
               <div class="dropdown span4 selection sec-a">
                 <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">Book Age</a>
                 <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">This Year</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 2 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 5 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 10 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 20 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Really Old</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 10);">Within 10 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 20);">Within 20 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1);">Really Old</a></li>
                 </ul>
               </div>
 
               <div class="dropdown span4 selection sec-a">
                 <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">Popularity</a>
                 <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">Top 10</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">All</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">All</a></li>
                 </ul>
               </div>          </div><!--/row-->
 

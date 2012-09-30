@@ -59,13 +59,15 @@ DON'T FORGET!
     <div class="container-fluid content">
       <div class="row-fluid"> <!--row outer-->
 
+	{{ form_data }}
+
         <div class="span12">
           <div class="row-fluid"> 
             <div class="span12 well result">
-              <h1>{{ Name }}</h1>
+              <h1>{{ Book.ItemAttributes.Title }}</h1>
               <div class="row-fluid">
                 <section class="span2">
-                  <p>book img to go here</p>
+                  <p><img src="{{ Book.LargeImage.URL.pyval }}" alt="No Image Available"></p>
                 </section>
 
                 <section class="span2">
@@ -87,7 +89,6 @@ DON'T FORGET!
                 </div>            
               </div>         
           </div><!--/row-->
-
 
           <div class="row-fluid">
             <h2>Similar Books</h2>
