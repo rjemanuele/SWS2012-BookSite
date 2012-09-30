@@ -157,6 +157,8 @@ DON'T FORGET!
                   </section>
 
                 <section class="span3">
+		  <!-- Colorize this better using http://www.greeneteapot.com/2011/03/change-colors-in-amazon-text-plus-image.html -->
+		  <!-- Automatic resizing?? -->
 		  <iframe src="{{ Book.CustomerReviews.IFrameURL }}" width="450" height="280"></iframe>
                 </section>
 
@@ -164,17 +166,21 @@ DON'T FORGET!
               </div>         
           </div><!--/row-->
 
-          <div class="row-fluid similar">
-            {% for similar_book in Similar %}
-            <section class="span4 well book"> <!--book-->
-              <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
-              <div class="row-fluid">
-                <div class="span6">
-                  <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
-                </div>
-              </div>		
-            </section> <!--/book-->
-            {% endfor %}
+          <div class="row-fluid"> 
+            <h1>Similar Titles</h1>
+
+            <div class="row-fluid similar">
+              {% for similar_book in Similar %}
+              <section class="span4 well book"> <!--book-->
+                <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
+                <div class="row-fluid">
+                  <div class="span6">
+                    <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
+                  </div>
+                </div>		
+              </section> <!--/book-->
+              {% endfor %}
+            </div>
           </div>
 	  {% endif %}
 
