@@ -73,6 +73,7 @@ DON'T FORGET!
               <div class="dropdown span4 selection sec-a">
                 <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genre_btn" href="#">{{ form.genre_text_field.value|default:"Genre"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this,'','Genre');">No Genre Preference</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Biographies &amp; Memoirs</a></li>
@@ -108,6 +109,7 @@ DON'T FORGET!
               <div class="dropdown span4 selection sec-a">
                 <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">{{ form.age_text_field.value|default:"Book Age"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1, 'Book Age');">No Book Age Preference</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
@@ -120,8 +122,9 @@ DON'T FORGET!
               <div class="dropdown span4 selection sec-a">
                 <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">{{ form.popularity_text_field.value|default:"Popularity"|safe }}<i class="icon-chevron-down"></i></a>
                 <ul class="dropdown-menu" role="menu" >
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,-1,'Popularity');">All</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">All</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">After Top 10</a></li>
                 </ul>
               </div>          </div><!--/row-->
 
