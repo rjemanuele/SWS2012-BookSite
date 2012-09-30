@@ -146,6 +146,7 @@ DON'T FORGET!
                 </section>
 
                   <section class="span4">
+                    <p>Author: {{ Book.ItemAttributes.Author }}</p>
                     <p>Book Summary Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -156,9 +157,19 @@ DON'T FORGET!
                 </div>            
               </div>         
           </div><!--/row-->
-        {% for similar_book in Similar %}
-            <a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a>, 
-        {% endfor %}
+
+          {% for similar_book in Similar %}
+          <div class="row-fluid">
+            <div class="row-fluid similar"> <!--similar books-->
+              <section class="span4 well book"> <!--book-->
+                <h6><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}">{{similar_book.ItemAttributes.Title}}</a></h6>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <p><a href="http://www.amazon.com/dp/{{ similar_book.ASIN }}/?tag={{ Tag }}"><img src="{{ similar_book.MediumImage.URL.pyval }}"></a></p>
+                    </div>
+                </div>
+              </section> <!--/book-->
+          {% endfor %}
 	  {% endif %}
 
 

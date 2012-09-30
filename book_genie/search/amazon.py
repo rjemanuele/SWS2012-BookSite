@@ -89,8 +89,11 @@ def get_book(genre, popularity, pub_era, before):
 def get_similar_books(ASIN):
 
     api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
-
-    for root in api.similarity_lookup(str(ASIN)):
+    params = {
+        'ResponseGroup' : 'Large',
+        'IdType' : 'ASIN'
+        }
+    for root in api.similarity_lookup(str(ASIN), **params):
 
         try:
             current_page = root.Items.Request.ItemSearchRequest.ItemPage.pyval
