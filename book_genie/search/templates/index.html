@@ -113,7 +113,7 @@ DON'T FORGET!
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 10);">Within 10 Years</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 20);">Within 20 Years</a></li>
-                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1);">Really Old</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 21);">Really Old</a></li>
                 </ul>
               </div>
 
@@ -191,9 +191,14 @@ DON'T FORGET!
 
 	  {% if Exception %}
           <div class="row-fluid well">
-	    Error: {{ Exception }} ( {{ Args }} )
+	    Internal Error: {{ Exception }} ( {{ Args }} )
           </div>
 	  {% endif %}
+	  {% for form_error in form.errors %}
+          <div class="row-fluid well">
+	    Form Error: {{ form_error }} {{ form_error.value }}
+          </div>
+	  {% endfor %}
 
 <!-- RECENT BOOKS 
           <div class="row-fluid"> 

@@ -7,17 +7,20 @@ import amazon
 from amazonproduct.errors import NoSimilarityForASIN
 
 class WheelForm(forms.Form):
-    genre_field = forms.CharField()
-    popularity_field = forms.IntegerField()
-    age_field = forms.IntegerField()
-    genre_text_field = forms.CharField()
-    popularity_text_field = forms.CharField()
-    age_text_field = forms.CharField()
+    genre_field = forms.CharField(required = False)
+    popularity_field = forms.IntegerField(required = False, initial = -1)
+    age_field = forms.IntegerField(required = False, initial = -1)
+    genre_text_field = forms.CharField(required = False)
+    popularity_text_field = forms.CharField(required = False)
+    age_text_field = forms.CharField(required = False)
 
 def AWSFetch1of50(genre, popularity, age):
     year = 2012
     before = False
-    if (age == -1):
+    if (age < 0):
+        year = year + 1
+        before = True
+    elif (age > 20):
         year = year - 19
         before = True
     else:
@@ -58,6 +61,6 @@ def index(request):
         form = WheelForm() # An unbound form
 
     return render(request, 'index.html', {
-        'form': form,
+        'form': form, 'form_errors':form.errors,
     })
     

@@ -50,7 +50,9 @@ def get_book(genre, popularity, pub_era, before):
         #print upper_bound
         #print top_results
         if (randSet):
-            if (popularity):
+            if (popularity < 0):
+                num = random.randrange(0, upper_bound)
+            elif (popularity):
                 num = random.randrange(0, top_results)
             else:
                 num = random.randrange(top_results, upper_bound)
