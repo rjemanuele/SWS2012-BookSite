@@ -58,9 +58,9 @@ DON'T FORGET!
 
     <div class="container-fluid content">
       <form id="myform" method="POST">
-        <input type="hidden" name="genrefield" value="">
-        <input type="hidden" name="popularityfield" value="">
-        <input type="hidden" name="agefield" value="">
+        <input type="hidden" name="genre_field" id="genre_field" value="">
+        <input type="hidden" name="popularity_field" id="popularity_field" value="">
+        <input type="hidden" name="age_field" id="age_field" value="">
         <div class="row-fluid">
 
 
@@ -68,7 +68,7 @@ DON'T FORGET!
             <div class="row-fluid"> 
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genrebtn" href="#">Genre</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genre_btn" href="#">Genre</a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
@@ -103,7 +103,7 @@ DON'T FORGET!
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="agebtn" href="#">Book Age</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="age_btn" href="#">Book Age</a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">This Year</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 2 Years</a></li>
@@ -115,7 +115,7 @@ DON'T FORGET!
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularitybtn" href="#">Popularity</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularity_btn" href="#">Popularity</a>
                 <ul class="dropdown-menu" role="menu" >
                   <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">Top 10</a></li>
                   <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">All</a></li>
