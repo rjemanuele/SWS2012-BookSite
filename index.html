@@ -10,9 +10,9 @@
     <!-- FILL IN LATER -->
 
     <!-- styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -57,7 +57,10 @@ DON'T FORGET!
     </div>
 
     <div class="container-fluid content">
-      <form>
+      <form id="myform" method="POST">
+        <input type="hidden" name="genrefield" value="">
+        <input type="hidden" name="popularityfield" value="">
+        <input type="hidden" name="agefield" value="">
         <div class="row-fluid">
 
 
@@ -65,63 +68,63 @@ DON'T FORGET!
             <div class="row-fluid"> 
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" href="#">Genre</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="genrebtn" href="#">Genre</a>
                 <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#">Arts &amp; Photography</a></li>
-                  <li><a tabindex="-1" href="#">Bargain Books</a></li>
-                  <li><a tabindex="-1" href="#">Biographies &amp; Memoirs</a></li>
-                  <li><a tabindex="-1" href="#">Business &amp; Investing</a></li>
-                  <li><a tabindex="-1" href="#">Children's Books</a></li>
-                  <li><a tabindex="-1" href="#">Christian Books &amp; Bibles</a></li>
-                  <li><a tabindex="-1" href="#">Comics &amp; Graphic Novels</a></li>
-                  <li><a tabindex="-1" href="#">Cook Books, Food &amp; Wine</a></li>
-                  <li><a tabindex="-1" href="#">Crafts Hobbies &amp; Home</a></li>
-                  <li><a tabindex="-1" href="#">Computers &amp; Technology</a></li>
-                  <li><a tabindex="-1" href="#">Education &amp; Reference</a></li>
-                  <li><a tabindex="-1" href="#">Gay &amp; Lesbian</a></li>
-                  <li><a tabindex="-1" href="#">Health, Fitness & Dieting</a></li>
-                  <li><a tabindex="-1" href="#">History</a></li>
-                  <li><a tabindex="-1" href="#">Humor &amp; Entertaining</a></li> 
-                  <li><a tabindex="-1" href="#">Law</a></li>
-                  <li><a tabindex="-1" href="#">Literature &amp; Fiction</a></li>
-                  <li><a tabindex="-1" href="#">Medicine</a></li>
-                  <li><a tabindex="-1" href="#">Mystery, Thriller &amp; Suspense</a></li>
-                  <li><a tabindex="-1" href="#">Parenting &amp; Relationships</a></li>
-                  <li><a tabindex="-1" href="#">Politics &amp; Social Sciences</a></li>
-                  <li><a tabindex="-1" href="#">Professional & Technical Books</a></li>
-                  <li><a tabindex="-1" href="#">Religion &amp; Spirituality</a></li>
-                  <li><a tabindex="-1" href="#">Romance</a></li>
-                  <li><a tabindex="-1" href="#">Science &amp; Math</a></li>
-                  <li><a tabindex="-1" href="#">Science Fiction & Fantasy</a></li>
-                  <li><a tabindex="-1" href="#">Sports &amp; Outdoors</a></li>
-                  <li><a tabindex="-1" href="#">Teens</a></li>
-                  <li><a tabindex="-1" href="#">Travel</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Biographies &amp; Memoirs</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Business &amp; Investing</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Children's Books</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Christian Books &amp; Bibles</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Comics &amp; Graphic Novels</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Cook Books, Food &amp; Wine</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Crafts Hobbies &amp; Home</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Computers &amp; Technology</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Education &amp; Reference</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Gay &amp; Lesbian</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Health, Fitness & Dieting</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">History</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Humor &amp; Entertaining</a></li> 
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Law</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Literature &amp; Fiction</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Medicine</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Mystery, Thriller &amp; Suspense</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Parenting &amp; Relationships</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Politics &amp; Social Sciences</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Professional & Technical Books</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Religion &amp; Spirituality</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Romance</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science &amp; Math</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science Fiction & Fantasy</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Sports &amp; Outdoors</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Teens</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Travel</a></li>
                 </ul>
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" href="#">Book Age</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="agebtn" href="#">Book Age</a>
                 <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#">This Year</a></li>
-                  <li><a tabindex="-1" href="#">Within 2 Years</a></li>
-                  <li><a tabindex="-1" href="#">Within 5 Years</a></li>
-                  <li><a tabindex="-1" href="#">Within 10 Years</a></li>
-                  <li><a tabindex="-1" href="#">Within 20 Years</a></li>
-                  <li><a tabindex="-1" href="#">Really Old</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">This Year</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 2 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 5 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 10 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Within 20 Years</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('age',this);">Really Old</a></li>
                 </ul>
               </div>
 
               <div class="dropdown span4 selection sec-a">
-                <a class="dropdown-toggle btn span12" data-toggle="dropdown" href="#">Popularity</a>
+                <a class="dropdown-toggle btn span12" data-toggle="dropdown" id="popularitybtn" href="#">Popularity</a>
                 <ul class="dropdown-menu" role="menu" >
-                  <li><a tabindex="-1" href="#">Top 10</a></li>
-                  <li><a tabindex="-1" href="#">All</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">Top 10</a></li>
+                  <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this);">All</a></li>
                 </ul>
               </div>          </div><!--/row-->
 
             <div class="row-fluid gobutton">
               <div class="span12">
-                <a class="btn btn-large span4 offset4" type="button" href="result.html">GO!</a>
+                <a class="btn btn-large span4 offset4" type="button" onclick="document.forms['myform'].submit()">GO!</a>
               </div>
             </div>
         </form>
@@ -231,8 +234,9 @@ DON'T FORGET!
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}reader.js"></script>
 
 
   </body>
