@@ -8,7 +8,7 @@ import amazon
 
 class WheelForm(forms.Form):
     genre_field = forms.CharField()
-    popularity_field = forms.BooleanField()
+    popularity_field = forms.IntegerField()
     age_field = forms.IntegerField()
     genre_text_field = forms.CharField()
     popularity_text_field = forms.CharField()
