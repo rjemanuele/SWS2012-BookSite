@@ -135,10 +135,10 @@ DON'T FORGET!
       {% if Book %}
           <div class="row-fluid"> 
             <div class="span12 well result">
-              <h1>{{ Book.ItemAttributes.Title }}</h1>
+              <h1><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}">{{ Book.ItemAttributes.Title }}</a></h1>
               <div class="row-fluid">
                 <section class="span2">
-                  <p><img src="{{ Book.LargeImage.URL.pyval }}"></p>
+                  <p><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}"><img src="{{ Book.LargeImage.URL.pyval }}"></a></p>
                 </section>
 
                 <section class="span4">
@@ -157,7 +157,7 @@ DON'T FORGET!
               </div>         
           </div><!--/row-->
         {% for similar_book in Similar %}
-            {{similar_book.ItemAttributes.Title}}, 
+            {{similar_book.ItemAttributes.Title}}, {{similar_book.ASIN}} <br>
         {% endfor %}
 	  {% endif %}
 
