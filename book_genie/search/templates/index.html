@@ -141,12 +141,11 @@ DON'T FORGET!
                   <p><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}"><img src="{{ Book.LargeImage.URL.pyval }}"></a></p>
                 </section>
 
-                <section class="span4">
-		  <iframe src="{{ Book.CustomerReviews.IFrameURL }}" width="400" height="300"></iframe>
-                </section>
-
-                  <section class="span4">
-                    <p>Author: {{ Book.ItemAttributes.Author }}</p>
+                  <section class="span5">
+		    <ul>
+                      <li>Author: {{ Book.ItemAttributes.Author }}</li>
+                      <li>ISBN: {{ Book.ItemAttributes.ISBN }}</li>
+		    </ul>
                     <p>Book Summary Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -154,6 +153,11 @@ DON'T FORGET!
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                   </section>
+
+                <section class="span3">
+		  <iframe src="{{ Book.CustomerReviews.IFrameURL }}" width="450" height="280"></iframe>
+                </section>
+
                 </div>            
               </div>         
           </div><!--/row-->
