@@ -2,6 +2,8 @@
 import os
 import sys
 
+sys.path.append(os.getcwd())
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "book_genie.settings")
 
