@@ -99,6 +99,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/book_genie.co/django_cache',
+    }
+}
+
 ROOT_URLCONF = 'book_genie.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.

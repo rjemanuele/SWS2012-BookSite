@@ -6,6 +6,7 @@ import random
 import amazon
 from amazonproduct.errors import NoSimilarityForASIN
 
+
 class WheelForm(forms.Form):
     genre_field = forms.CharField(required = False)
     popularity_field = forms.IntegerField(required = False, initial = -1)
@@ -25,7 +26,7 @@ def AWSFetch1of50(genre, popularity, age):
         before = True
     else:
         year = year - age - 1
-        
+
     try:
         book = amazon.get_book(genre, popularity, year, before)
         try:
@@ -47,20 +48,24 @@ def AWSFetch1of50(genre, popularity, age):
 
 def index(request):
 
+    result={}
+
     if request.method == 'POST': # If the form has been submitted...
         form = WheelForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             print "Yes, VALID data: { %s } { %d } { %d }"%(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
-            content = AWSFetch1of50(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
-            # Process the data in form.cleaned_data
-            # ...
-            content['form'] = form
-            return render(request, 'index.html', content)
+            result = AWSFetch1of50(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
 
     else:
         form = WheelForm() # An unbound form
 
-    return render(request, 'index.html', {
-        'form': form, 'form_errors':form.errors,
-    })
-    
+    result.update({
+            'Genres': amazon.Genres,
+            'BookAges': amazon.BookAges,
+            'Popularities': amazon.Popularities,
+            'form': form,
+            })
+    return render(request, 'index.html', result)
+
+
+

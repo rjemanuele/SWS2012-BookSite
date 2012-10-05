@@ -120,36 +120,9 @@ Do later
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu" >
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this,'','Genre');">No Genre Preference</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Arts &amp; Photography</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Bargain Books</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Biographies &amp; Memoirs</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Business &amp; Investing</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Children's Books</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Christian Books &amp; Bibles</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Comics &amp; Graphic Novels</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Cook Books, Food &amp; Wine</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Crafts Hobbies &amp; Home</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Computers &amp; Technology</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Education &amp; Reference</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Gay &amp; Lesbian</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Health, Fitness &amp; Dieting</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">History</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Humor &amp; Entertaining</a></li> 
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Law</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Literature &amp; Fiction</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Medicine</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Mystery, Thriller &amp; Suspense</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Parenting &amp; Relationships</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Politics &amp; Social Sciences</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Professional &amp; Technical Books</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Religion &amp; Spirituality</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Romance</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science &amp; Math</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Science Fiction &amp; Fantasy</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Sports &amp; Outdoors</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Teens</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this);">Travel</a></li>
+              {% for genre in Genres %}
+              <li><a tabindex="-1" href="#" onclick="set_category_value('genre',this {% if genre.value %}, '{{genre.value}}'{% if genre.text_field_value %}, '{{ genre.text_field_value }}'{% endif %}{% endif %});">{{ genre.name }}</a></li>
+              {% endfor %}
             </ul>
         </div>
 
@@ -159,13 +132,9 @@ Do later
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu" >
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, -1, 'Book Age');">No Book Age Preference</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 0);">This Year</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 2);">Within 2 Years</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 5);">Within 5 Years</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 10);">Within 10 Years</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 20);">Within 20 Years</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, 21);">Older than 20 Years</a></li>
+              {% for age in BookAges %}
+              <li><a tabindex="-1" href="#" onclick="set_category_value('age',this, {{age.value}}{% if age.text_field_value %}, '{{ age.text_field_value }}' {% endif %});">{{ age.name }}</a></li>
+              {% endfor %}
             </ul>
         </div>
 
@@ -175,9 +144,9 @@ Do later
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu" >
-              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,-1,'Popularity');">All</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,1);">Top 10</a></li>
-              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this,0);">Exclude Top 10</a></li>
+              {% for pop in Popularities %}
+              <li><a tabindex="-1" href="#" onclick="set_category_value('popularity',this, {{pop.value}}{% if pop.text_field_value %}, '{{ pop.text_field_value }}' {% endif %});">{{ pop.name }}</a></li>
+              {% endfor %}
             </ul>
         </div>
 
