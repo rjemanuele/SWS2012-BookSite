@@ -207,6 +207,11 @@ def get_similar_books(ASIN):
             i = i + 1
 
 def genie_year(age):
+    '''
+    Convert a publication age to before/after year
+
+    :param age: -1 for all, N years old, if N > 20 get all beyond that
+    '''
     year = 2013
     before = False
     if (age < 0):

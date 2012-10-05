@@ -15,7 +15,7 @@ class WheelForm(forms.Form):
     popularity_text_field = forms.CharField(required = False)
     age_text_field = forms.CharField(required = False)
 
-def AWSFetch1of50(genre, popularity, age):
+def AWSFetchContent(genre, popularity, age):
     (year, before) = amazon.genie_year(age)
 
     try:
@@ -45,7 +45,7 @@ def index(request):
         form = WheelForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             print "Yes, VALID data: { %s } { %d } { %d }"%(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
-            result = AWSFetch1of50(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
+            result = AWSFetchContent(form.cleaned_data['genre_field'],form.cleaned_data['popularity_field'],form.cleaned_data['age_field'])
 
     else:
         form = WheelForm() # An unbound form
