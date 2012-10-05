@@ -17,7 +17,7 @@ TOP = 10
 RESULTS_PER_PAGE = 10 # defined by amazon
 MAX_PAGES = 10 # defined by amazon
 RESULT_LIMIT = RESULTS_PER_PAGE * MAX_PAGES 
-CACHE_LIFE = 60 * 60
+CACHE_LIFE = 2 * 60 * 60 # stretch the cache to 2 hours
 
 # the responses are usually in UTF-8, move this somewhere else
 reload(sys)
@@ -126,7 +126,7 @@ def get_book_set(power):
                     except:
                         author = 'Unknown Author'
 
-                print "%d  %s: %s - %s"%(count, book.ASIN, author, book.ItemAttributes.Title)
+                #print "%d  %s: %s - %s"%(count, book.ASIN, author, book.ItemAttributes.Title)
                 book_set.append(book)
 
                 if (not result_count):
@@ -205,3 +205,42 @@ def get_similar_books(ASIN):
             similar_items.append(book)
 
             i = i + 1
+
+def genie_year(age):
+    year = 2012
+    before = False
+    if (age < 0):
+        year = year + 1
+        before = True
+    elif (age > 20):
+        year = year - 19
+        before = True
+    else:
+        year = year - age - 1
+
+    return(year, before)
+
+
+def prepopulate_cache():
+    '''
+    Prepopulate the cache with all the book set combonations
+    '''
+    for genre_item in Genres:
+        try:
+            genre = genre_item['value'];
+        except:
+            genre = genre_item['name'];
+
+        for age_item in BookAges:
+            (year, before) = genie_year(age_item['value'])
+
+            genre = genre.replace('&amp;', ' ')
+            genre = genre.replace('&', ' ')
+            genre = genre.replace(',', ' ')
+
+            power = power_string(genre, year, before)
+
+            books = get_book_set(power)
+            print "Power: %s ; Results: %d"%(power,len(books))
+            cache.set(base64.b64encode(power),pickle.dumps(books), CACHE_LIFE)
+

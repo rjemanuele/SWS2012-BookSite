@@ -16,16 +16,7 @@ class WheelForm(forms.Form):
     age_text_field = forms.CharField(required = False)
 
 def AWSFetch1of50(genre, popularity, age):
-    year = 2012
-    before = False
-    if (age < 0):
-        year = year + 1
-        before = True
-    elif (age > 20):
-        year = year - 19
-        before = True
-    else:
-        year = year - age - 1
+    (year, before) = amazon.genie_year(age)
 
     try:
         book = amazon.get_book(genre, popularity, year, before)
