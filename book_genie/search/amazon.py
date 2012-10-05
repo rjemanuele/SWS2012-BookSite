@@ -56,7 +56,7 @@ Genres = [{'name':'No Genre Preference', 'value':' ', 'text_field_value':'Genre'
           ]
 
 BookAges = [{'name':'No Book Age Preference', 'value':-1, 'text_field_value':'Book Age'},
-            {'name':'This Year', 'value':0},
+            {'name':'This Year', 'value':1},
             {'name':'Within 2 Years', 'value':2},
             {'name':'Within 5 Years', 'value':5},
             {'name':'Within 10 Years', 'value':10},
@@ -207,13 +207,13 @@ def get_similar_books(ASIN):
             i = i + 1
 
 def genie_year(age):
-    year = 2012
+    year = 2013
     before = False
     if (age < 0):
-        year = year + 1
+        year = year
         before = True
     elif (age > 20):
-        year = year - 19
+        year = year - 20
         before = True
     else:
         year = year - age - 1
