@@ -124,7 +124,7 @@ def get_book_set(power):
                     try:
                         author = book.ItemAttributes.Creator
                     except:
-                        author = Unknown Author
+                        author = 'Unknown Author'
 
                 print "%d  %s: %s - %s"%(count, book.ASIN, author, book.ItemAttributes.Title)
                 book_set.append(book)
