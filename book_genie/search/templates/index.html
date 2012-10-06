@@ -100,6 +100,7 @@ Do later
             </div>
         </div>
     </div>
+    <a name="results"></a>
     <div class="row-fluid">
         <div class="span12 options">
             <h1>Select your options</h1>
@@ -161,6 +162,12 @@ Do later
     </form>
 <hr>
 {% if Book %}
+    <script>
+      window.onload = function ()
+      {
+        location.hash = 'results';
+      }
+    </script>
     <div class="row-fluid">
         <div class="span12 well result">
             <h1><a href="http://www.amazon.com/dp/{{ Book.ASIN }}/?tag={{ Tag }}">{{ Book.ItemAttributes.Title }}</a> <span>| {{ Book.ItemAttributes.Author }}</span></h1>
