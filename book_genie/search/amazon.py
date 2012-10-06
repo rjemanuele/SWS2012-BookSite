@@ -6,8 +6,9 @@ import pprint
 import pickle
 from django.core.cache import cache
 import base64
-from amazonproduct import NoExactMatchesFound
-from amazonproduct import API
+import amazonproduct
+import socket
+import time
 
 AWS_KEY = 'AKIAJ7B6DSAVWVFPC7RQ'
 SECRET_KEY = '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'
@@ -93,7 +94,7 @@ def get_book_set(power):
 
     :param power: A power searchstring
     '''
-    api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
+    api = amazonproduct.API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
 
     roots = api.item_search('Books', ResponseGroup='Large,EditorialReview', Power=power, Sort = "salesrank")
 
@@ -179,7 +180,7 @@ def get_similar_books(ASIN):
     :prarm ASIN: Amazon product ID
     '''
 
-    api = API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
+    api = amazonproduct.API(AWS_KEY, SECRET_KEY, 'us', ASSOCIATE_TAG)
     params = {
         'ResponseGroup' : 'Large',
         'IdType' : 'ASIN'
@@ -245,7 +246,17 @@ def prepopulate_cache():
 
             power = power_string(genre, year, before)
 
-            books = get_book_set(power)
-            print "Power: %s ; Results: %d"%(power,len(books))
-            cache.set(base64.b64encode(power),pickle.dumps(books), CACHE_LIFE)
+            attempt = 0
+            while (attempt < 10):
+                attempt = attempt + 1
+                try:
+                    books = get_book_set(power)
+                    print "Attempt %d: Power: %s ; Results: %d"%(attempt,power,len(books))
+                    cache.set(base64.b64encode(power),pickle.dumps(books), CACHE_LIFE)
+                    break
+                except amazonproduct.errors.TooManyRequests as inst:
+                    print "Attempt %d: Power: %s ; Fail with %s, %s"%(attempt,power,str(type(inst)), str(inst))
+                    time.sleep(20)
+                except socket.timeout as inst:
+                    print "Attempt %d: Power: %s ; Fail with %s, %s"%(attempt,power,str(type(inst)), str(inst))
 
